@@ -1,6 +1,6 @@
 <img src="https://static.octopuscdn.com/constantine/constantine.svg" alt="Octopus Energy mascot, Constantine" width="100" />
 
-# Octopus Frontend code test
+# Octopus Frontend product app
 
 In this code test, you'll be asked to:
 
