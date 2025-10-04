@@ -1,11 +1,11 @@
 /* Octopus Energy brand colours used in the design */
 :root {
-  --hemocyanin: #180048;
   --ice: #f0ffff;
-  --plum: #600e6b;
   --purpleHaze: #a49fc8;
+  --hemocyanin: #180048;
   --siphon: #100030;
   --sohoLights: #f050f8;
+  --plum: #600e6b;
 }
 
 html,
@@ -28,3 +28,24 @@ body {
   height: 100vh;
   margin: 0 auto;
 }
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.product-list li {
+  padding: 1rem;
+  background: var(--hemocyanin);
+  list-style: none;
+  cursor: pointer;
+}
+
+.product-list li.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.product-page {}

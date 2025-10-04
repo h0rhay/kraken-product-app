@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import Product from "../pages/product";
+import Product from "../pages/product/[id]";
 
 test("should be able to increase and decrease product quantity", async () => {
   const { getByText, getByTitle } = render(<Product />);

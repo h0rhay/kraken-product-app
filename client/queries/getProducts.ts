@@ -5,8 +5,6 @@ export const GET_ALL_PRODUCTS = `
             name
             description
             price
-            img_url
-            quantity
         }
     }
 `;
