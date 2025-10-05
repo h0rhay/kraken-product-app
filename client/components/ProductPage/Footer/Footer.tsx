@@ -1,4 +1,4 @@
-const Footer = () => {
+export default function Footer() {
     return (
         <footer className="alt-background product-footer">
             <p>Octopus Energy Ltd is a company registered in England and Wales.
@@ -7,5 +7,3 @@ Trading office: 20–24 Broadwick Street, London, W1F 8HT.</p>
         </footer>
     );
 };
-
-export default Footer;

@@ -4,6 +4,9 @@
  * @returns Formatted currency string (e.g., "£12.99")
  */
 export function formatCurrency(pence: number): string {
+  if (pence === undefined || pence === null) {
+    return 'Price unavailable';
+  }
   const pounds = pence / 100;
   return `£${pounds.toFixed(2)}`;
 }
