@@ -5,6 +5,10 @@ export default function Document() {
     <Html>
       <Head>
         <link
+            rel="preconnect"
+            href="https://static.octopuscdn.com"
+        />
+        <link
           rel="stylesheet"
           type="text/css"
           href="https://static.octopuscdn.com/fonts/Gotham/fonts.min.css"

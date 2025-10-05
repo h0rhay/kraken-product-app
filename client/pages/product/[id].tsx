@@ -19,19 +19,25 @@ export default function Product({ product }: { product: Product }) {
 
       <figure className="product-image">
         {product.img_url && (
-          <Image src={product.img_url} alt={product.name} width={200} height={200} />
+          <Image 
+            src={product.img_url} 
+            alt={product.name} 
+            width={410} 
+            height={410}
+            objectFit="contain"
+          />
         )}
       </figure>
 
       <div className="product-title">
-        <h1>{product.name}</h1>
+        <h1 className="heading">{product.name}</h1>
         <p className="product-specs">
-          {product.power} // {product.quantity}
+          {product.power} // Packet of {product.quantity}
         </p>
       </div>
 
       <div className="price-qty">
-        <h1>£{product.price.toFixed(2)}</h1>
+        <h2 className="heading">£{product.price.toFixed(2)}</h2>
         <div className="qty-wrapper">
           <p className="qty-label">Qty</p>
           <div className="qty-controls">
@@ -45,12 +51,12 @@ export default function Product({ product }: { product: Product }) {
       <button className="add-to-cart">Add to cart</button>
 
       <section>
-        <h2>Description</h2>
+        <h2 className="heading">Description</h2>
         <p className="product-description">{product.description}</p>
       </section>
 
       <section className="product-specs">
-        <h2>Specifications</h2>
+        <h2 className="heading">Specifications</h2>
         <dl className="specs">
           <dt>Brand</dt>
           <dd>{product.brand}</dd>

@@ -5,19 +5,72 @@
   --hemocyanin: #180048;
   --siphon: #100030;
   --sohoLights: #f050f8;
+  --sohoLightsLight: #fa98ff;
   --plum: #600e6b;
+  --imgBg: #F2F2F2;
 }
+/* //////////// Mini CSS Reset ///////////// */
+
+/* Box sizing makes layout simpler */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* Improve font rendering & line height */
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { font: inherit; }
+
+/* Media elements behave well */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts on form elements */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Word wrap defaults */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Stacking context / isolation for apps like React/Next */
+#root, #__next {
+  isolation: isolate;
+}
+
+/* //////////// End Mini CSS Reset ///////////// */
+
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Gotham, helvetica, arial, sans-serif;
+  font-weight: 500;
   color: var(--ice);
+  background: var(--siphon);
 }
 
-body {
-  background: var(--siphon);
+p, span {
+  font-weight: 400;
+}
+
+.heading {
+  font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 .home {
@@ -74,15 +127,16 @@ body {
 }
 
 .product-image {
-  background: var(--ice);
-  border-radius: 1.5rem;
-  margin: 0;
-}
-
-.product-image img {
-  border-radius: 1.5rem;
   width: 100%;
-  display: block;
+  max-width: 410px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--imgBg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-title h1 {
@@ -90,8 +144,9 @@ body {
 }
 
 .product-specs {
-  color: var(--purpleHaze);
   margin: 0;
+  color: var(--purpleHaze);
+
 }
 
 .price-qty {
@@ -138,11 +193,18 @@ body {
   border-radius: 0.75rem;
   border: none;
   background: var(--sohoLights);
-  color: var(--ice);
+  color: var(--hemocyanin);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-to-cart:hover {
+  color: var(--siphon);
+  background-color: var(--sohoLightsLight);
+  border-color: var(--sohoLightsLight);
 }
 
 .product-description {
-  color: var(--purpleHaze);
   margin: 1rem 0 0;
 }
 
@@ -161,7 +223,6 @@ body {
 }
 
 .specs dt {
-  color: var(--purpleHaze);
   font-weight: 500;
 }
 
