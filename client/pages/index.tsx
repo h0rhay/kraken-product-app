@@ -15,7 +15,10 @@ export default function Home({ products }: { products: Product[] }) {
             height={50}
           />
         </figure>
-        <h1>Welcome to the Octopus Energy Frontend Product App</h1>
+        <h1 className="heading">Welcome to the Octopus Energy / Kraken Frontend Product App</h1>
+        <p className="lead">Please click on an active product to view its detailed product tile.</p>
+        <p className="lead">I have structured the app this way to demonstrate dynamic routing within this mini Next.js project.</p>
+        <p className="lead space-below">This setup closely mirrors how a GraphQL API might handle requests using a <code>Product(ID)</code> pattern.</p>
         <ProductList products={products} />
       </div>
     </main>
