@@ -212,6 +212,10 @@ p, span {
   align-items: center;
 }
 
+.product-header span {
+  max-height: 32px;
+}
+
 .product-logo {
   height: 24px;
 }
@@ -219,7 +223,7 @@ p, span {
 .shopping-basket {
   position: relative;
   width: 24px;
-  height: 50px;
+  height: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,7 +231,7 @@ p, span {
 
 .cart-count-badge {
   position: absolute;
-  bottom: 8px;
+  bottom: 0px;
   left: -4px;
   background: var(--sohoLights);
   color: var(--ice);
@@ -267,6 +271,11 @@ p, span {
 
 .price-qty h1 {
   margin: 0;
+}
+
+.quantity {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .qty-wrapper {
