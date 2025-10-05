@@ -12,7 +12,7 @@ const SampleProducts = [
     description: "Another test product for testing",
     price: 1299,
     disabled: true,
-  }
+  },
 ];
 
 export default SampleProducts;

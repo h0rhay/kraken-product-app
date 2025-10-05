@@ -1,23 +1,33 @@
 import { type Product } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
+import Image from "next/image";
 import ShoppingBasket from "../../components/ShoppingBasket";
 
 export default function Product({ product }: { product: Product }) {
-
-  return(
-    <div className="product-page">
+  return (
+    <article className="product-page">
       <header className="product-header">
-        <img className="product-logo" src="https://static.octopuscdn.com/logos/logo.svg" alt="Octopus Energy Logo" />
+        <Image
+          className="product-logo"
+          src="https://static.octopuscdn.com/logos/logo.svg"
+          alt="Octopus Energy Logo"
+          width={200}
+          height={50}
+        />
         <ShoppingBasket className="cart-icon" />
       </header>
 
       <figure className="product-image">
-        {product.img_url && <img src={product.img_url} alt={product.name} />}
+        {product.img_url && (
+          <Image src={product.img_url} alt={product.name} width={200} height={200} />
+        )}
       </figure>
 
       <div className="product-title">
         <h1>{product.name}</h1>
-        <p className="product-specs">{product.power} // {product.quantity}</p>
+        <p className="product-specs">
+          {product.power} // {product.quantity}
+        </p>
       </div>
 
       <div className="price-qty">
@@ -39,34 +49,40 @@ export default function Product({ product }: { product: Product }) {
         <p className="product-description">{product.description}</p>
       </section>
 
-      <section>
+      <section className="product-specs">
         <h2>Specifications</h2>
-        <div className="specs">
-          <span className="spec-label">Brand</span>
-          <span className="spec-value">{product.brand}</span>
-          <span className="spec-label">Item weight (g)</span>
-          <span className="spec-value">{product.weight}</span>
-          <span className="spec-label">Dimensions (cm)</span>
-          <span className="spec-value">{product.height} x {product.width} x {product.length}</span>
-          <span className="spec-label">Item Model number</span>
-          <span className="spec-value">{product.model_code}</span>
-          <span className="spec-label">Colour</span>
-          <span className="spec-value">{product.colour}</span>
-        </div>
+        <dl className="specs">
+          <dt>Brand</dt>
+          <dd>{product.brand}</dd>
+          <dt>Item weight (g)</dt>
+          <dd>{product.weight}</dd>
+          <dt>Dimensions (cm)</dt>
+          <dd>
+            {product.height} x {product.width} x {product.length}
+          </dd>
+          <dt>Item model number</dt>
+          <dd>{product.model_code}</dd>
+          <dt>Colour</dt>
+          <dd>{product.colour}</dd>
+        </dl>
       </section>
-    </div>
-  )
+    </article>
+  );
 }
 
-export const getStaticProps = async ({ params }: { params: { id: string } }) => {
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
   const res = await fetch(`http://localhost:3001/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ 
-      query: GET_PRODUCT_BY_ID, 
-      variables: { productId: params.id } 
+    body: JSON.stringify({
+      query: GET_PRODUCT_BY_ID,
+      variables: { productId: params.id },
     }),
   });
   const { data } = await res.json();
@@ -77,8 +93,7 @@ export const getStaticProps = async ({ params }: { params: { id: string } }) => 
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: '1'}}],
-    fallback: 'blocking'
-  }
+    paths: [{ params: { id: "1" } }],
+    fallback: "blocking",
+  };
 }
-

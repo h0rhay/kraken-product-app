@@ -30,3 +30,16 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# IDE settings - commit these for team consistency
+# .vscode/settings.json  # Uncommenting this line would hide VS Code settings
+
+# ESLint cache
+.eslintcache
+
+# Editor directories and files
+.vscode/launch.json
+.vscode/extensions.json
+.idea/
+*.swp
+*.swo

@@ -48,7 +48,6 @@ body {
   cursor: not-allowed;
 }
 
-
 .product-page {
   max-width: 390px;
   margin: 0 auto;
@@ -56,6 +55,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: var(--siphon);
 }
 
 .product-header {
@@ -149,15 +149,22 @@ body {
 .specs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1rem 2rem;
   margin-top: 1rem;
 }
 
-.spec-label {
-  color: var(--purpleHaze);
+.specs dt,
+.specs dd {
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
-.spec-value {
+.specs dt {
+  color: var(--purpleHaze);
+  font-weight: 500;
+}
+
+.specs dd {
   color: var(--ice);
-  text-align: right;
 }

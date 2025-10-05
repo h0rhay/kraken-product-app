@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GET_ALL_PRODUCTS } from "../queries/getProducts";
 import { Product } from "../types/Product";
 import ProductList from "../components/ProductList/ProductList";
@@ -7,9 +8,11 @@ export default function Home({ products }: { products: Product[] }) {
     <main>
       <div className="home">
         <figure>
-          <img
+          <Image
             src="https://static.octopuscdn.com/logos/logo.svg"
             alt="Octopus Energy Logo"
+            width={200}
+            height={50}
           />
         </figure>
         <h1>Welcome to the Octopus Energy Frontend Product App</h1>
@@ -27,7 +30,7 @@ export const getStaticProps = async () => {
     },
     body: JSON.stringify({ query: GET_ALL_PRODUCTS }),
   });
-  const { data } = await res.json();  
+  const { data } = await res.json();
   return {
     props: { products: data.allProducts },
   };

@@ -1,10 +1,12 @@
 import { Product } from "../types/Product";
 const ProductTile = ({ product }: { product: Product }) => {
-  return <div>
-    <h2>{product.name}</h2>
-    <p>{product.description}</p>
-    <p>{product.price}</p>
-  </div>;
+  return (
+    <div>
+      <h2>{product.name}</h2>
+      <p>{product.description}</p>
+      <p>{product.price}</p>
+    </div>
+  );
 };
 
 export default ProductTile;
