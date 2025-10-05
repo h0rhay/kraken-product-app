@@ -2,6 +2,7 @@ import Image from "next/image";
 import { GET_ALL_PRODUCTS } from "../queries/getProducts";
 import { Product } from "../types/Product";
 import ProductList from "../components/ProductList/ProductList";
+import { GRAPHQL_ENDPOINT } from '../lib/config';
 
 export default function Home({ products }: { products: Product[] }) {
   return (
@@ -26,7 +27,7 @@ export default function Home({ products }: { products: Product[] }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3001/graphql", {
+  const res = await fetch(GRAPHQL_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

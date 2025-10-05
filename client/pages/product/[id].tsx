@@ -12,7 +12,7 @@ import Quantity from "../../components/ProductPage/Quantity/Quantity";
 import CallToAction from "../../components/ProductPage/CallToAction/CallToAction";
 import Description from "../../components/ProductPage/Description/Description";
 import Specifications from "../../components/ProductPage/Specifications/Specifications";
-
+import { GRAPHQL_ENDPOINT } from '../../lib/config';
 interface ProductPageProps {
   product: Product;
 }
@@ -20,8 +20,6 @@ interface ProductPageProps {
 interface ProductPageParams extends ParsedUrlQuery {
   id: string;
 }
-
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:3001/graphql';
 
 function ProductContent({ product }: { product: Product }) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
