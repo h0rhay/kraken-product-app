@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { type Product } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
+import { CartProvider } from "../../context/CartContext";
 import Footer from "../../components/Footer";
 import Header from "../../components/ProductPage/Header/Header";
 import MainImage from "../../components/ProductPage/MainImage/MainImage";
@@ -9,18 +11,31 @@ import CallToAction from "../../components/ProductPage/CallToAction/CallToAction
 import Description from "../../components/ProductPage/Description/Description";
 import Specifications from "../../components/ProductPage/Specifications/Specifications";
 
-export default function Product({ product }: { product: Product }) {
+function ProductContent({ product }: { product: Product }) {
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
   return (
     <article className="product-page">
       <Header />
       <MainImage product={product} />
       <Title product={product} />
-      <Quantity product={product} />
-      <CallToAction />
+      <Quantity 
+        product={product} 
+        onQuantityChange={setSelectedQuantity}
+      />
+      <CallToAction quantity={selectedQuantity} />
       <Description product={product} />
       <Specifications product={product} />
       <Footer />
     </article>
+  );
+}
+
+export default function Product({ product }: { product: Product }) {
+  return (
+    <CartProvider>
+      <ProductContent product={product} />
+    </CartProvider>
   );
 }
 
