@@ -2,6 +2,7 @@ import { type Product } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
 import Image from "next/image";
 import ShoppingBasket from "../../components/ShoppingBasket";
+import Footer from "../../components/Footer";
 
 export default function Product({ product }: { product: Product }) {
   return (
@@ -50,7 +51,7 @@ export default function Product({ product }: { product: Product }) {
 
       <button className="add-to-cart">Add to cart</button>
 
-      <section>
+      <section className="alt-background">
         <h2 className="heading">Description</h2>
         <p className="product-description">{product.description}</p>
       </section>
@@ -72,6 +73,7 @@ export default function Product({ product }: { product: Product }) {
           <dd>{product.colour}</dd>
         </dl>
       </section>
+      <Footer />
     </article>
   );
 }
