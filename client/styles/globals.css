@@ -131,7 +131,7 @@ p, span {
   background: var(--hemocyanin);
   list-style: none;
   cursor: pointer;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
 }
 
 .product-list li.disabled {
@@ -184,7 +184,7 @@ p, span {
   max-width: 410px;
   aspect-ratio: 1;
   margin: 0 auto;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   overflow: hidden;
   background: var(--imgBg);
   display: flex;
@@ -197,8 +197,6 @@ p, span {
 .product-title h1 {
   margin: 0 0 0.5rem;
 }
-
-
 
 .price-qty {
   display: flex;
@@ -228,14 +226,22 @@ p, span {
 .qty-btn {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0.75rem;
   border: none;
   background: var(--plum);
   color: var(--ice);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.qty-btn.plus {
-  background: linear-gradient(135deg, var(--plum), var(--sohoLights));
+.qty-btn:hover {
+  color: var(--siphon);
+  background-color: var(--sohoLights);
+  border-color: var(--sohoLights);
+}
+
+.qty-btn:active {
+  transform: scale(0.95);
 }
 
 .add-to-cart {
@@ -253,6 +259,16 @@ p, span {
   color: var(--siphon);
   background-color: var(--sohoLightsLight);
   border-color: var(--sohoLightsLight);
+}
+
+.add-to-cart:active {
+  transform: scale(0.98);
+}
+
+.add-to-cart:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .product-specs {
