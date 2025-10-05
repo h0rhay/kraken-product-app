@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { GetStaticProps, GetStaticPaths } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 import { type Product } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
 import { CartProvider } from "../../context/CartContext";
@@ -10,6 +12,16 @@ import Quantity from "../../components/ProductPage/Quantity/Quantity";
 import CallToAction from "../../components/ProductPage/CallToAction/CallToAction";
 import Description from "../../components/ProductPage/Description/Description";
 import Specifications from "../../components/ProductPage/Specifications/Specifications";
+
+interface ProductPageProps {
+  product: Product;
+}
+
+interface ProductPageParams extends ParsedUrlQuery {
+  id: string;
+}
+
+const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:3001/graphql';
 
 function ProductContent({ product }: { product: Product }) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -39,30 +51,42 @@ export default function Product({ product }: { product: Product }) {
   );
 }
 
-export const getStaticProps = async ({
+export const getStaticProps: GetStaticProps<ProductPageProps, ProductPageParams> = async ({
   params,
-}: {
-  params: { id: string };
 }) => {
-  const res = await fetch(`http://localhost:3001/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_PRODUCT_BY_ID,
-      variables: { productId: params.id },
-    }),
-  });
-  const { data } = await res.json();
-  return {
-    props: { product: data.Product },
-  };
+  try {
+    const res = await fetch(GRAPHQL_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: GET_PRODUCT_BY_ID,
+        variables: { productId: params?.id },
+      }),
+    });
+    
+    const { data } = await res.json();
+    
+    if (!data?.Product) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        product: data.Product,
+      },
+      revalidate: 30 * 60,
+    };
+  } catch (error) {
+    console.error('Failed to fetch product:', error);
+    return { notFound: true };
+  }
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<ProductPageParams> = async () => {
   return {
     paths: [{ params: { id: "1" } }],
     fallback: "blocking",
   };
-}
+};
