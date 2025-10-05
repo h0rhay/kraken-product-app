@@ -26,3 +26,8 @@ export interface ProductResponse {
 export interface ProductsResponse {
   allProducts: Product[];
 }
+
+export interface ProductGraphQLResponse {
+  data?: { Product: Product };
+  errors?: { message: string }[];
+}

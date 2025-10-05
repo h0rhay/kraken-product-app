@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { type Product } from "../../types/Product";
+import { type Product, type ProductGraphQLResponse } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
 import { CartProvider } from "../../context/CartContext";
 import Footer from "../../components/ProductPage/Footer/Footer";
@@ -66,15 +66,20 @@ export const getStaticProps: GetStaticProps<ProductPageProps, ProductPageParams>
       }),
     });
     
-    const { data } = await res.json();
+    const result: ProductGraphQLResponse = await res.json();
     
-    if (!data?.Product) {
+    if (result.errors) {
+      console.error('GraphQL errors:', result.errors);
+      return { notFound: true };
+    }
+
+    if (!result.data?.Product) {
       return { notFound: true };
     }
 
     return {
       props: {
-        product: data.Product,
+        product: result.data.Product,
       },
       revalidate: 30 * 60,
     };
