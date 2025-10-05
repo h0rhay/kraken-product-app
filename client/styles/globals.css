@@ -37,6 +37,16 @@ img, picture, video, canvas, svg {
   max-width: 100%;
 }
 
+/* Remove default list styling */
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 /* Inherit fonts on form elements */
 input, button, textarea, select {
   font: inherit;
@@ -74,7 +84,7 @@ p, span {
 }
 
 .heading {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.2;
   margin-bottom: 1rem;
   text-align: center;
@@ -82,7 +92,17 @@ p, span {
 
 @media (min-width: 768px) {
   .heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+}
+
+.sub-heading {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .sub-heading {
+    font-size: 1.6rem;
   }
 }
 
@@ -110,8 +130,15 @@ p, span {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  
   margin: 0 auto;
+  padding: 0 4rem;
+}
+
+@media (min-width: 768px) {
+  .home {
+    height: 100vh;
+  }
 }
 
 .product-list {
@@ -129,9 +156,20 @@ p, span {
 .product-list li {
   padding: 1rem;
   background: var(--hemocyanin);
-  list-style: none;
   cursor: pointer;
   border-radius: 1.2rem;
+}
+
+.product-list li:hover {
+  background: var(--siphon);
+}
+
+.product-list li:active {
+  transform: scale(0.98);
+}
+
+.product-list li:active {
+  transform: scale(0.98);
 }
 
 .product-list li.disabled {
@@ -332,6 +370,6 @@ p, span {
 }
 
 footer {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--purpleHaze);
 }

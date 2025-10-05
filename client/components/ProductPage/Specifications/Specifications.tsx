@@ -7,7 +7,7 @@ interface SpecificationsProps {
 export default function Specifications({ product }: SpecificationsProps) {
   return (
     <section className="product-specifications">
-      <h2 className="heading">Specifications</h2>
+      <h2 className="heading sub-heading">Specifications</h2>
       <dl className="specs">
         <dt>Brand</dt>
         <dd>{product.brand}</dd>
