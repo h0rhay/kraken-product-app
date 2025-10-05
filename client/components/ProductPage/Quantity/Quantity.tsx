@@ -1,4 +1,5 @@
 import { Product } from '../../../types/Product';
+import { formatCurrency } from '../../../lib/formatCurrency';
 
 interface QuantityProps {
   product: Product;
@@ -7,7 +8,7 @@ interface QuantityProps {
 export default function Quantity({ product }: QuantityProps) {
   return (
     <section className="price-qty">
-      <h2 className="heading">£{product.price.toFixed(2)}</h2>
+      <h2 className="heading">{formatCurrency(product.price)}</h2>
       <div className="qty-wrapper">
         <p className="qty-label">Qty</p>
         <div className="qty-controls">
