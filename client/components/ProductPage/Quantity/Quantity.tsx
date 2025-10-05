@@ -37,7 +37,7 @@ export default function Quantity({ product, onQuantityChange }: QuantityProps) {
           >
             -
           </button>
-          <span>{quantity}</span>
+          <span title="Current quantity">{quantity}</span>
           <button className="qty-btn plus" onClick={handleIncrement}>
             +
           </button>
