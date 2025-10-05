@@ -1,4 +1,4 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../../../context/CartContext';
 
 export default function ShoppingBasket({ className }: { className?: string }) {
   const { itemCount } = useCart();

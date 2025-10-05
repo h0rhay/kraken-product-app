@@ -1,5 +1,5 @@
-import { Product } from "../types/Product";
-import { formatCurrency } from "../lib/formatCurrency";
+import { Product } from "../../types/Product";
+import { formatCurrency } from "../../lib/formatCurrency";
 
 const ProductTile = ({ product }: { product: Product }) => {
   return (

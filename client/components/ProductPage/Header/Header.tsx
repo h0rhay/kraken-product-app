@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import ShoppingBasket from '../../ShoppingBasket';
+import ShoppingBasket from '../ShoppingBasket/ShoppingBasket';
 
 export default function Header() {
   return (

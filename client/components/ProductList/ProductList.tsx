@@ -1,6 +1,6 @@
 import { Product, ProductListItem } from "../../types/Product";
 import Link from "next/link";
-import ProductTile from "../ProductTile";
+import ProductTile from "./ProductTile";
 import SampleProducts from "./SampleProducts";
 
 const ProductList = ({ products }: { products: Product[] }) => {

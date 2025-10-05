@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { type Product } from "../../types/Product";
 import { GET_PRODUCT_BY_ID } from "../../queries/getProducts";
 import { CartProvider } from "../../context/CartContext";
-import Footer from "../../components/Footer";
+import Footer from "../../components/ProductPage/Footer/Footer";
 import Header from "../../components/ProductPage/Header/Header";
 import MainImage from "../../components/ProductPage/MainImage/MainImage";
 import Title from "../../components/ProductPage/Title/Title";
