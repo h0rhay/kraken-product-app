@@ -3,13 +3,21 @@
 # Octopus Frontend product app
 
 Thanks for sending this through. I had fun completing the challenge. 
+
 The app renders an intro screen where you can click the product tile in question and see the supplied design.
+
 I wanted to explore the dynamic routing with Next JS and felt this behaviour more closely aligns with a 'real world' product page which would potentially have a different directory setup utilising the product id.
+
 I've tried to keep the mobile version very close to the supplied design. Subtle differences lie in the complexity of measuring the spacing and font sizes on the png image.
+
 I have ensured the main integration tests pass, and mirror the app functionality of incrementing and decrementing and adding to cart.
+
 Couldnt resist adding a cart counter badge!
+
 Unit tests have been added for the core components to ensure consistency when engineers update them.
+
 I left the CSS in JS alone as, for an app this small, the global file was perfectly fit for purpose. In a more complex app with multiple states then a CSS in JS solution would be easier to maintain.
+
 There is a `desktop` branch with a wide screen view, as I was not sure if the goal was to closely follow the design, or to foolow this statement: _Ideally the app should be responsive._
 
 ---
