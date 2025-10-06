@@ -26,7 +26,7 @@ export default function Quantity({ product, onQuantityChange }: QuantityProps) {
 
   return (
     <section className="price-qty">
-      <h2 className="heading price-heading">{formatCurrency(product.price)}</h2>
+      <h2 className="sub-heading price-heading">{formatCurrency(product.price)}</h2>
       <div className="qty-wrapper">
         <p className="qty-label">Qty</p>
         <div className="qty-controls">
@@ -37,7 +37,7 @@ export default function Quantity({ product, onQuantityChange }: QuantityProps) {
           >
             -
           </button>
-          <span className="quantity" title="Current quantity">{quantity}</span>
+          <span className="sub-heading" title="Current quantity">{quantity}</span>
           <button className="qty-btn plus" onClick={handleIncrement}>
             +
           </button>

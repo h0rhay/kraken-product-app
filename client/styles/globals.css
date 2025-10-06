@@ -84,26 +84,15 @@ p, span {
 }
 
 .heading {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   line-height: 1.4;
   margin-bottom: 1rem;
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .heading {
-    font-size: 2rem;
-  }
-}
-
 .sub-heading {
-  font-size: 1.4rem;
-}
-
-@media (min-width: 768px) {
-  .sub-heading {
-    font-size: 1.6rem;
-  }
+  font-size: 1.7rem;
+  font-weight: 500;
 }
 
 .main-title {
@@ -206,12 +195,13 @@ p, span {
   text-align: left;
 }
 
-.heading.price-heading {
+.sub-heading.price-heading {
   margin: 2rem 0 0 0;
 }
 
 .product-header {
   padding: 0 1rem;
+  margin-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -227,8 +217,8 @@ p, span {
 
 .shopping-basket {
   position: relative;
-  width: 24px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -278,11 +268,6 @@ p, span {
   margin: 0;
 }
 
-.quantity {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
 .qty-wrapper {
   display: flex;
   flex-direction: column;
@@ -290,7 +275,8 @@ p, span {
 }
 
 .qty-label {
-  color: var(--purpleHaze);
+  color: var(--ice);
+  font-size: 0.75rem;
   margin: 0 0 0.25rem;
 }
 
