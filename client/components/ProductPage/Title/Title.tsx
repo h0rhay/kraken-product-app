@@ -7,7 +7,7 @@ interface TitleProps {
 export default function Title({ product }: TitleProps) {
   return (
     <div className="product-title">
-      <h1 className="heading">{product.name}</h1>
+      <h1 className="heading main-title">{product.name}</h1>
       <p className="product-specs">
         {product.power && `${product.power} // `}
         {product.quantity && `Packet of ${product.quantity}`}
