@@ -27,15 +27,21 @@ function ProductContent({ product }: { product: Product }) {
   return (
     <article className="product-page">
       <Header />
-      <MainImage product={product} />
-      <Title product={product} />
-      <Quantity 
-        product={product} 
-        onQuantityChange={setSelectedQuantity}
-      />
-      <CallToAction quantity={selectedQuantity} />
-      <Description product={product} />
-      <Specifications product={product} />
+      <div className="product-content">
+        <div className="product-main">
+          <MainImage product={product} />
+          <Title product={product} />
+          <Quantity 
+            product={product} 
+            onQuantityChange={setSelectedQuantity}
+          />
+          <CallToAction quantity={selectedQuantity} />
+        </div>
+        <div className="product-sidebar">
+          <Description product={product} />
+          <Specifications product={product} />
+        </div>
+      </div>
       <Footer />
     </article>
   );
