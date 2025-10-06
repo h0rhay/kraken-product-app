@@ -7,3 +7,5 @@ Trading office: 20–24 Broadwick Street, London, W1F 8HT.</p>
         </footer>
     );
 };
+
+// This component just render a text string so we can omit any tests for it.
