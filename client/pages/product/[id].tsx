@@ -66,12 +66,8 @@ export const getStaticProps: GetStaticProps<ProductPageProps, ProductPageParams>
     
     const result: ProductGraphQLResponse = await res.json();
     
-    if (result.errors) {
-      console.error('GraphQL errors:', result.errors);
-      return { notFound: true };
-    }
-
     if (!result.data?.Product) {
+      console.error(`Failed to fetch product ${params?.id}: No data returned`);
       return { notFound: true };
     }
 
@@ -82,7 +78,7 @@ export const getStaticProps: GetStaticProps<ProductPageProps, ProductPageParams>
       revalidate: 30 * 60,
     };
   } catch (error) {
-    console.error('Failed to fetch product:', error);
+    console.error(`Failed to fetch product ${params?.id}:`, error);
     return { notFound: true };
   }
 };

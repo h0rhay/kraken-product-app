@@ -27,15 +27,27 @@ export default function Home({ products }: { products: Product[] }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(GRAPHQL_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query: GET_ALL_PRODUCTS }),
-  });
-  const { data } = await res.json();
-  return {
-    props: { products: data.allProducts },
-  };
+  try {
+    const res = await fetch(GRAPHQL_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: GET_ALL_PRODUCTS }),
+    });
+    
+    const { data } = await res.json();
+    
+    if (!data?.allProducts) {
+      console.error('Failed to fetch products: No data returned from GraphQL');
+      return { props: { products: [] } };
+    }
+
+    return {
+      props: { products: data.allProducts },
+    };
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+    return { props: { products: [] } };
+  }
 };
