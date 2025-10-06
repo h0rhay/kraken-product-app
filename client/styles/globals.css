@@ -220,12 +220,13 @@ p, span {
   }
 }
 
-.product-header, .product-footer {
+
+.product-header, .product-footer, .product-title, .price-qty, .call-to-action, .product-description, .product-specifications {
   padding: 0 1.325rem;
 }
 
-.product-title, .price-qty, .call-to-action, .product-description, .product-specifications {
-  padding: 0 1.325rem;
+.product-specifications {
+  padding-bottom: 1.325rem;
 }
 
 /* Adjust padding for desktop layout */
