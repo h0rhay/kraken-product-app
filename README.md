@@ -18,7 +18,7 @@ Unit tests have been added for the core components to ensure consistency when en
 
 I left the CSS in JS alone as, for an app this small, the global file was perfectly fit for purpose. In a more complex app with multiple states then a CSS in JS solution would be easier to maintain.
 
-There is a `desktop` branch with a wide screen view, as I was not sure if the goal was to closely follow the design, or to foolow this statement: _Ideally the app should be responsive._
+There is a `desktop` branch with a wide screen view, as I was not sure if the goal was to closely follow the design, or to follow this statement: _Ideally the app should be responsive._
 
 ---
 
