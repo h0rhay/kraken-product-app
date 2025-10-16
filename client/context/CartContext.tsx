@@ -2,10 +2,13 @@ import React, { createContext, useContext, useState, useCallback } from 'react';
 
 interface CartState {
   itemCount: number;
+  quantity: number;
 }
 
 interface CartActions {
-  addToCart: (quantity: number) => void;
+  addToCart: () => void;
+  incrementQuantity: () => void;
+  decrementQuantity: () => void;
 }
 
 interface CartContextValue extends CartState, CartActions {}
@@ -18,14 +21,26 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [itemCount, setItemCount] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
-  const addToCart = useCallback((quantity: number) => {
+  const addToCart = useCallback(() => {
     setItemCount(prev => prev + quantity);
+  }, [quantity]);
+
+  const incrementQuantity = useCallback(() => {
+    setQuantity(prev => prev + 1);
+  }, []);
+
+  const decrementQuantity = useCallback(() => {
+    setQuantity(prev => prev > 1 ? prev - 1 : 1);
   }, []);
 
   const contextValue = {
     itemCount,
+    quantity,
     addToCart,
+    incrementQuantity,
+    decrementQuantity,
   };
 
   return (

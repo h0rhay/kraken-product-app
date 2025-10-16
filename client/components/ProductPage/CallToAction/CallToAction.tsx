@@ -1,19 +1,11 @@
 import { useCart } from '../../../context/CartContext';
 
-interface CallToActionProps {
-  quantity: number;
-}
-
-export default function CallToAction({ quantity }: CallToActionProps) {
+export default function CallToAction() {
   const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    addToCart(quantity);
-  };
 
   return (
     <section className="call-to-action">
-      <button className="add-to-cart" onClick={handleAddToCart}>
+      <button className="add-to-cart" onClick={addToCart}>
         Add to cart
       </button>
     </section>

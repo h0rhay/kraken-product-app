@@ -1,28 +1,13 @@
-import { useState } from 'react';
 import { Product } from '../../../types/Product';
 import { formatCurrency } from '../../../lib/formatCurrency';
+import { useCart } from '../../../context/CartContext';
 
 interface QuantityProps {
   product: Product;
-  onQuantityChange: (quantity: number) => void;
 }
 
-export default function Quantity({ product, onQuantityChange }: QuantityProps) {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleIncrement = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    onQuantityChange(newQuantity);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-      onQuantityChange(newQuantity);
-    }
-  };
+export default function Quantity({ product }: QuantityProps) {
+  const { quantity, incrementQuantity, decrementQuantity } = useCart();
 
   return (
     <section className="price-qty">
@@ -32,13 +17,13 @@ export default function Quantity({ product, onQuantityChange }: QuantityProps) {
         <div className="qty-controls">
           <button 
             className="qty-btn" 
-            onClick={handleDecrement}
+            onClick={decrementQuantity}
             disabled={quantity <= 1}
           >
             -
           </button>
           <span className="sub-heading" title="Current quantity">{quantity}</span>
-          <button className="qty-btn plus" onClick={handleIncrement}>
+          <button className="qty-btn plus" onClick={incrementQuantity}>
             +
           </button>
         </div>

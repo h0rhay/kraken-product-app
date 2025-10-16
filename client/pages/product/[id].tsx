@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { type Product, type ProductGraphQLResponse } from "../../types/Product";
@@ -21,30 +20,19 @@ interface ProductPageParams extends ParsedUrlQuery {
   id: string;
 }
 
-function ProductContent({ product }: { product: Product }) {
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-
-  return (
-    <article className="product-page">
-      <Header />
-      <MainImage product={product} />
-      <Title product={product} />
-      <Quantity 
-        product={product} 
-        onQuantityChange={setSelectedQuantity}
-      />
-      <CallToAction quantity={selectedQuantity} />
-      <Description product={product} />
-      <Specifications product={product} />
-      <Footer />
-    </article>
-  );
-}
-
 export default function Product({ product }: { product: Product }) {
   return (
     <CartProvider>
-      <ProductContent product={product} />
+      <article className="product-page">
+        <Header />
+        <MainImage product={product} />
+        <Title product={product} />
+        <Quantity product={product} />
+        <CallToAction />
+        <Description product={product} />
+        <Specifications product={product} />
+        <Footer />
+      </article>
     </CartProvider>
   );
 }

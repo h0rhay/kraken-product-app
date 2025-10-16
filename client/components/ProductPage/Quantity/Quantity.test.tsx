@@ -1,6 +1,8 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Quantity from './Quantity';
 import { Product } from '../../../types/Product';
+import { CartProvider } from '../../../context/CartContext';
 
 const mockProduct: Product = {
   id: 1,
@@ -9,30 +11,30 @@ const mockProduct: Product = {
   price: 2599, // £25.99
 };
 
-const mockOnQuantityChange = jest.fn();
+// Helper function to render component with CartProvider
+const renderWithCartProvider = (component: React.ReactElement) => {
+  return render(<CartProvider>{component}</CartProvider>);
+};
 
 describe('Quantity', () => {
-  beforeEach(() => {
-    mockOnQuantityChange.mockClear();
-  });
 
   it('renders without crashing', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
   });
 
   it('displays formatted price', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     expect(screen.getByText('£25.99')).toBeInTheDocument();
   });
 
   it('displays quantity label and initial quantity of 1', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     expect(screen.getByText('Qty')).toBeInTheDocument();
     expect(screen.getByTitle('Current quantity')).toHaveTextContent('1');
   });
 
   it('displays increment and decrement buttons', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     expect(screen.getByRole('button', { name: '+' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '-' })).toBeInTheDocument();
   });
@@ -40,14 +42,14 @@ describe('Quantity', () => {
   // Note: Basic increment/decrement functionality is covered by integration tests in /test/product.test.tsx
 
   it('disables decrement button when quantity is 1', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     
     const minusButton = screen.getByRole('button', { name: '-' });
     expect(minusButton).toBeDisabled();
   });
 
   it('enables decrement button when quantity is greater than 1', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     
     // Increment to 2
     const plusButton = screen.getByRole('button', { name: '+' });
@@ -58,22 +60,20 @@ describe('Quantity', () => {
   });
 
   it('does not decrement below 1', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     
     const minusButton = screen.getByRole('button', { name: '-' });
     fireEvent.click(minusButton); // Should not do anything
     
     expect(screen.getByTitle('Current quantity')).toHaveTextContent('1');
-    expect(mockOnQuantityChange).not.toHaveBeenCalled();
   });
 
-  it('calls onQuantityChange callback with correct values', () => {
-    render(<Quantity product={mockProduct} onQuantityChange={mockOnQuantityChange} />);
+  it('increments quantity when plus button is clicked', () => {
+    renderWithCartProvider(<Quantity product={mockProduct} />);
     
     const plusButton = screen.getByRole('button', { name: '+' });
     fireEvent.click(plusButton);
     
-    expect(mockOnQuantityChange).toHaveBeenCalledWith(2);
-    expect(mockOnQuantityChange).toHaveBeenCalledTimes(1);
+    expect(screen.getByTitle('Current quantity')).toHaveTextContent('2');
   });
 });

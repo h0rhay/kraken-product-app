@@ -2,19 +2,19 @@ import { render, screen } from '@testing-library/react';
 import CallToAction from './CallToAction';
 import { CartProvider } from '../../../context/CartContext';
 
-const CallToActionWithContext = ({ quantity }: { quantity: number }) => (
+const CallToActionWithContext = () => (
   <CartProvider>
-    <CallToAction quantity={quantity} />
+    <CallToAction />
   </CartProvider>
 );
 
 describe('CallToAction', () => {
   it('renders without crashing', () => {
-    render(<CallToActionWithContext quantity={1} />);
+    render(<CallToActionWithContext />);
   });
 
   it('displays the add to cart button', () => {
-    render(<CallToActionWithContext quantity={1} />);
+    render(<CallToActionWithContext />);
     expect(screen.getByRole('button', { name: /add to cart/i })).toBeInTheDocument();
   });
 
