@@ -12,7 +12,7 @@ export default function ShoppingBasket({ className }: { className?: string }) {
         height={30}
       />
       {itemCount > 0 && (
-        <span className="cart-count-badge" title="Basket items">{itemCount}</span>
+        <span key={itemCount} className="cart-count-badge" title="Basket items">{itemCount}</span>
       )}
     </div>
     

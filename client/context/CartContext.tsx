@@ -25,6 +25,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const addToCart = useCallback(() => {
     setItemCount(prev => prev + quantity);
+    setQuantity(1);
   }, [quantity]);
 
   const incrementQuantity = useCallback(() => {
