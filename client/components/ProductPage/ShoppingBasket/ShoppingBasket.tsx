@@ -15,6 +15,6 @@ export default function ShoppingBasket({ className }: { className?: string }) {
         <span key={itemCount} className="cart-count-badge" title="Basket items">{itemCount}</span>
       )}
     </div>
-    
+
   );
 }

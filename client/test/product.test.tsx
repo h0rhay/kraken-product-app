@@ -1,6 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import Product from "../pages/product/[id]";
 import { Product as ProductType } from "../types/Product";
+import { LayoutProvider } from "../context/LayoutContext";
 
 const mockProduct: ProductType = {
   id: 1,
@@ -17,8 +18,14 @@ const mockProduct: ProductType = {
   img_url: "https://example.com/test-image.jpg"
 };
 
+const ProductWithLayout = ({ product }: { product: ProductType }) => (
+  <LayoutProvider>
+    <Product product={product} />
+  </LayoutProvider>
+);
+
 test("should be able to increase and decrease product quantity", async () => {
-  const { getByText, getByTitle } = render(<Product product={mockProduct} />);
+  const { getByText, getByTitle } = render(<ProductWithLayout product={mockProduct} />);
 
   const increaseQuantity = getByText("+");
 
@@ -35,7 +42,7 @@ test("should be able to increase and decrease product quantity", async () => {
 });
 
 test("should be able to add items to the basket", async () => {
-  const { getByText, getByTitle } = render(<Product product={mockProduct} />);
+  const { getByText, getByTitle } = render(<ProductWithLayout product={mockProduct} />);
 
   const increaseQuantity = getByText("+");
 

@@ -1,0 +1,116 @@
+/* Desktop layout styles - conditionally applied when .desktop-layout class is present */
+
+/* Layout toggle button - only visible on desktop */
+.layout-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--sohoLights);
+  color: var(--ice);
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+}
+
+.layout-toggle:hover {
+  background: var(--sohoLightsLight);
+  transform: scale(1.1);
+}
+
+.layout-toggle:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .layout-toggle {
+    display: flex;
+  }
+}
+
+/* Desktop layout structure */
+.desktop-layout .product-page {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.desktop-layout .product-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 450px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.desktop-layout .product-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.desktop-layout .product-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Desktop 2-column layout */
+@media (min-width: 768px) {
+  .desktop-layout .product-content {
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+}
+
+/* Adjust padding for desktop layout */
+.desktop-layout .product-specifications {
+  padding-bottom: 1.325rem;
+}
+
+@media (min-width: 768px) {
+  .desktop-layout .product-header {
+    margin-bottom: 1.325rem;
+  }
+
+  .desktop-layout .product-header,
+  .desktop-layout .product-footer {
+    padding: 0 2rem;
+  }
+
+  .desktop-layout .product-title,
+  .desktop-layout .price-qty,
+  .desktop-layout .call-to-action,
+  .desktop-layout .product-description,
+  .desktop-layout .product-specifications {
+    padding: 0;
+  }
+}
+
+/* Adjust alt-background padding for desktop */
+@media (min-width: 768px) {
+  .desktop-layout .alt-background,
+  .desktop-layout .product-specifications {
+    padding: 2rem;
+  }
+}
+
+/* Full-width image on desktop */
+@media (min-width: 768px) {
+  .desktop-layout .product-image {
+    max-width: none;
+  }
+}
